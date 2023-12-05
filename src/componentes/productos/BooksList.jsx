@@ -12,9 +12,7 @@ const BookList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          'http://localhost:3000/books'
-        );
+        const response = await axios.get('http://localhost:3000/books');
         setBooks(response.data);
         const totalPages = Math.ceil(response.data.length / booksPerPage);
         setTotalPages(totalPages);
@@ -37,26 +35,17 @@ const BookList = () => {
       setCurrentPage(currentPage + 1);
     }
   };
+
   const startIndex = (currentPage - 1) * booksPerPage;
   const endIndex = startIndex + booksPerPage;
 
-  const generadorDePrecio = () => {
-    const precioRandom =
-      Math.floor(Math.random() * (5000 - 1500 + 1)) + 1500;
-    return precioRandom;
-  };
-
   const handleOrdenLibros = () => {
-    const librosOrdenados = [...books].sort((a, b) =>
-      a.title.localeCompare(b.title)
-    );
+    const librosOrdenados = [...books].sort((a, b) => a.title.localeCompare(b.title));
     setBooks(librosOrdenados);
   };
 
   const handleOrdenLibrosZA = () => {
-    const librosOrdenados = [...books].sort((a, b) =>
-      b.title.localeCompare(a.title)
-    );
+    const librosOrdenados = [...books].sort((a, b) => b.title.localeCompare(a.title));
     setBooks(librosOrdenados);
   };
 
@@ -69,30 +58,32 @@ const BookList = () => {
   );
 
   const booksParaMostrar = librosFiltrados.slice(startIndex, endIndex);
+  const noResultsMessage = (
+    <p>No se encontraron libros que coincidan con la búsqueda.</p>
+  );
 
   return (
     <>
       <div className='libros'>
-        <h1> La lectura es un viaje. ¡Ven a explorarlo con nosotros! </h1>
+        <h1 className='Navbar'>La lectura es un viaje. ¡Ven a explorarlo con nosotros!</h1>
         <h2>Lista de Libros</h2>
-        <input type='text'placeholder='Buscar libros' value={searchQuery} onChange={handleInput} className='barraDeBusqueda'/>
+        <input
+          type='text'
+          placeholder='Buscar libros'
+          value={searchQuery}
+          onChange={handleInput}
+          className='barraDeBusqueda'
+        />
         <div className='productos'>
-          <ul>
-            {booksParaMostrar.map((book) => (
-              <li key={book.id}>
-                <div className='imagenes-producto'>
-                  <img src={book.image_url} alt={book.title} />
-                </div>
-                <div className='titulo'>
-                  {book.title} - {book.authors}
-                </div>
-                <div>${generadorDePrecio()}</div>
-                <div>
-                  <button>Comprar</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+          {booksParaMostrar.length > 0 ? (
+            <div className='card-container'>
+              {booksParaMostrar.map((book) => (
+                <ProductCard book={book} />
+              ))}
+            </div>
+          ) : (
+            noResultsMessage
+          )}
         </div>
         <div className='paginacion'>
           <div className='botones-paginacion'>
@@ -107,4 +98,4 @@ const BookList = () => {
   );
 };
 
-export default BookList
+export default BookList;

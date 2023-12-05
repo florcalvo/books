@@ -20,6 +20,7 @@ function NavBar() {
       <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
         <NavLink to={"/"} onClick={toggleMobileMenu}>Home</NavLink>
         <NavLink to={"/tienda"} onClick={toggleMobileMenu}>Store</NavLink>
+        <NavLink to={"/venta"}>Venta</NavLink>
         <NavLink to={"/Cart"} onClick={toggleMobileMenu}>Cart</NavLink>
       </div>
     </nav>

@@ -9,10 +9,4 @@ const dbConfig ={
     database: "books",
     }
     
-//Se crea la conexión con la DB
-//export const connection = await mysql.createConnection(dbConfig);
-//connection.connect(err => {
-//    err ? console.error(err) : console.log("Connected to database");
-//})
-
 export const connection = mysql.createPool(dbConfig);

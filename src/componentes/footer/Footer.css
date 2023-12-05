@@ -2,7 +2,7 @@
     background-color: #91818A;
     padding: 20px 0;
     max-height: 50px;
-
+    margin-top:15px;
   }
   
   .footer .container {
@@ -38,5 +38,4 @@
     .footer p {
         font-size: 13px;
     }
-
   }
