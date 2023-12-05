@@ -65,8 +65,8 @@ const BookList = () => {
   return (
     <>
       <div className='libros'>
-        <h1 className='Navbar'>La lectura es un viaje. ¡Ven a explorarlo con nosotros!</h1>
-        <h2>Lista de Libros</h2>
+        <h1 className='Navbar'style={{ margin: '20px' }}>La lectura es un viaje. ¡Ven a explorarlo con nosotros!</h1>
+        <h2 style={{ margin: '20px' }}>Lista de Libros</h2>
         <input
           type='text'
           placeholder='Buscar libros'
@@ -74,13 +74,13 @@ const BookList = () => {
           onChange={handleInput}
           className='barraDeBusqueda'
         />
-        <div className='productos'>
+        <div className='productos' style={{ margin: '20px' }}>
           {booksParaMostrar.length > 0 ? (
             <div className='card-container'>
               {booksParaMostrar.map((book) => (
                 <ProductCard book={book} />
               ))}
-            </div>
+            </div >
           ) : (
             noResultsMessage
           )}

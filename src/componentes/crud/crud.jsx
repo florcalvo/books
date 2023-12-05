@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../crud/crud.css"
 
-
 const Crud = () => {
   const [books, setBooks] = useState([]);
   const [newBook, setNewBook] = useState({ title: '', author: '', genre: '', price: '' });
